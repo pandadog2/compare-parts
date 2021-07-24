@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_24_065958) do
+ActiveRecord::Schema.define(version: 2021_07_24_071739) do
 
   create_table "car_models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "car_model_code", null: false
@@ -18,6 +18,21 @@ ActiveRecord::Schema.define(version: 2021_07_24_065958) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_car_models_on_user_id"
+  end
+
+  create_table "parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "part_name_id", null: false
+    t.string "product_number", null: false
+    t.integer "material_id", null: false
+    t.string "thickness", null: false
+    t.string "weight", null: false
+    t.integer "supplier_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "car_model_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_model_id"], name: "index_parts_on_car_model_id"
+    t.index ["user_id"], name: "index_parts_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -34,4 +49,6 @@ ActiveRecord::Schema.define(version: 2021_07_24_065958) do
   end
 
   add_foreign_key "car_models", "users"
+  add_foreign_key "parts", "car_models"
+  add_foreign_key "parts", "users"
 end
