@@ -1,0 +1,30 @@
+<header>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <div class="p-8 bg-gray-800 flex items-center text-gray-50 justify-between">
+    <h1 class="font-bold text-4xl ">CarParts</h1>
+    <a class="mx-10 text-1xl " href="http://localhost:3000/">TOPに戻る</a>
+  
+    <div class="flex">
+      <% if user_signed_in? %>
+      <div class="mx-10">
+        <%= current_user.name %>さん
+      </div>
+      <div class="float-right">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </div>
+      <% else %>
+      <div>
+        <%= link_to "ログイン", new_user_session_path %>
+      </div>
+      <div>
+        <%= link_to "新規登録", new_user_registration_path %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div>
+        
+    
+    </div>
+  </div>
+</header>
