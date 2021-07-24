@@ -4,42 +4,45 @@
   <div class="m-8">
     <%= image_tag @part.image.variant(resize: "850x850"), class: 'part-image' %>
   </div>
-  <div class="p-8 pt-16 text-3xl ">
-    車種：<%= @part.car_model.car_model_code %>
-    <div class="mt-2">
-      部品名：<%= @part.part_name.name %>
+  <div class="p-8 pt-16">
+    <div class="p-1 text-3xl bg-gray-200 rounded-md">
+      車種：<%= @part.car_model.car_model_code %>
     </div>
-    <div class="mt-2">
-      品番：<%= @part.product_number %>
+    <div class="mt-2 text-3xl">
+      部品名 ： <%= @part.part_name.name %>
     </div>
-    <div class="mt-2">
-      材質：<%= @part.material.name %>
+    <div class="mt-2 p-1 text-3xl bg-gray-200 rounded-md">
+      品番 ： <%= @part.product_number %>
     </div>
-    <div class="mt-2">
-      板厚：<%= @part.thickness %>mm
+    <div class="mt-2 text-3xl">
+      材質 ： <%= @part.material.name %>
     </div>
-    <div class="mt-2">
-      質量：<%= @part.weight %>g
+    <div class="mt-2 text-3xl p-1 bg-gray-200 rounded-md">
+      板厚 ： <%= @part.thickness %>mm
     </div>
-    <div class="mt-2">
-      仕入先：<%= @part.supplier.name %>
+    <div class="mt-2 text-3xl">
+      質量 ： <%= @part.weight %>g
     </div>
-    <div class="mt-4">
-      登録者：<%= @part.user.name %>
+    <div class="mt-2 p-1 text-3xl bg-gray-200 rounded-md">
+      仕入先 ： <%= @part.supplier.name %>
     </div>
-    <div class="mt-2">
-      <%= l @part.created_at %>
+    <div class="mt-8 text-2xl">
+      登録者 ： <%= @part.user.name %>
     </div>
+    <div class="mt-2 text-2xl">
+      登録日 ： <%= @part.created_at.strftime('%Y/%m/%d') %>
     </div>
-    <div class="mt-2">
-      <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-2 rounded">
-        <%= link_to "修正する", edit_car_model_part_path %>
-      </button>
-    </div>
-    <div class="mt-2">
-      <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-2 rounded">
-        <%= link_to "削除する", car_model_part_path, method: :delete %>
-      </button>
+    <div class="flex">
+      <div class="mt-10 text-xs">
+        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-2 rounded">
+          <%= link_to "修正する", edit_car_model_part_path %>
+        </button>
+      </div>
+      <div class="mt-10 text-xs">
+        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-2 rounded">
+          <%= link_to "削除する", car_model_part_path, method: :delete %>
+        </button>
+      </div>
     </div>
     </div>
   </div>
