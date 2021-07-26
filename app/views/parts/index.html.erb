@@ -33,14 +33,14 @@
             <%= f.radio_button :thickness_lteq, '' %>
             指定なし
             <br>
-            <%= f.radio_button :thickness_lteq, '10' %>
+            <%= f.radio_button :thickness_lteq, '10.00' %>
             10.00mm以下
-            <%= f.radio_button :thickness_lteq, '20' %>
+            <%= f.radio_button :thickness_lteq, '20.00' %>
             20.00mm以下
             <br>
-            <%= f.radio_button :thickness_lteq, '30' %>
+            <%= f.radio_button :thickness_lteq, '30.00' %>
             30.00mm以下
-            <%= f.radio_button :thickness_lteq, '40' %>
+            <%= f.radio_button :thickness_lteq, '40.00' %>
             40.00mm以下
           </div>
           <div class="mt-2">
@@ -48,28 +48,29 @@
             <%= f.radio_button :weight_lteq, '' %>
             指定なし
             <br>
-            <%= f.radio_button :weight_lteq, '1000' %>
+            <%= f.radio_button :weight_lteq, '1000.00' %>
             1000.00g以下
-            <%= f.radio_button :weight_lteq, '3000' %>
+            <%= f.radio_button :weight_lteq, '3000.00' %>
             3000.00g以下
             <br>
-            <%= f.radio_button :weight_lteq, '5000' %>
+            <%= f.radio_button :weight_lteq, '5000.00' %>
             5000.00g以下
-            <%= f.radio_button :weight_lteq, '10000' %>
+            <%= f.radio_button :weight_lteq, '10000.00' %>
             10000.00g以下
           </div>
           <div class="mt-2">
             <%= f.label :"仕入先" %>
-            <%= f.collection_select :supplier_id, Supplier.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+            <%= f.collection_select :supplier_id_eq, Supplier.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
           </div>
           <div class="mt-2">
             <button f.submit class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-1 rounded">
               検索する
             </button>
-          </div>
+          
           <button name="button" type="reset" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-1 rounded">
             リセットする
           </button>
+          </div>
         <% end %>
       </div>
     

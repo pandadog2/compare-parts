@@ -6,9 +6,9 @@
 <div class="space-x-4 flex">
   <% if @results.length != 0 %>
     <% @results.each do |result| %>
-      <div class="inline-block w-1/3 place-self-center">
-        <div class="center">
-          <i class="far fa-times-circle fa-2x fa-pull-right fa-border" id='hide-btn'></i>
+      <div class="inline-block w-1/3 place-self-center hide_area">
+        <div>
+          <i class="far fa-times-circle fa-2x fa-pull-right fa-border hide_btn"></i>
         </div>
         <%= image_tag result.image.variant(resize: "400x400") %>
         <div class="p-1">
