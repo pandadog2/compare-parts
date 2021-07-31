@@ -15,6 +15,6 @@ class Part < ApplicationRecord
     validates  :part_name_id, :material_id, :supplier_id
   end
 
-  validates :product_number, format: { with: /\A[0-9]{5}-[0-9]{5}\z/, message: "は半角数字５桁-５桁で入力してください" }, uniqueness: true
-  validates :thickness, :weight, numericality: true, format: { with: /\A[0-9]{0,6}\.[0-9]{2}\z/, message: "は整数部分6桁以内、小数部分2桁で入力してください" }
+  validates :product_number, format: { with: /\A[0-9]{5}-[0-9]{5}\z/, message: "is 5 digits-5 digits (half-width number)" }, uniqueness: { case_sensitive: true }
+  validates :thickness, :weight, numericality: true, format: { with: /\A[0-9]{0,6}\.[0-9]{2}\z/, message: "is 2 digits for the decimal part and 6 digits or less for the natural number part" }
 end
