@@ -7,7 +7,7 @@
   </div>
   <div class="field">
     <%= f.label :"車種" %>
-    <%= f.collection_select(:car_model_id, CarType.order(:car_model_code), :id, :car_model_code, {}) %>
+    <%= f.collection_select(:car_model_id, CarModel.order(:car_model_code), :id, :car_model_code, {}) %>
   </div>
   <div class="field">
     <%= f.label :"部品名" %>
