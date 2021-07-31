@@ -1,0 +1,95 @@
+<%= render "shared/header" %>
+<div class="wrapper">
+<div class=" flex bg-gray-600">
+  <div class="bg-cover">
+    <%= image_tag 'tacoma.jpg', size: "1200x800" %>
+  </div>
+
+  <div class="m-4">
+    <div class="p-4 bg-gray-50 rounded-md">
+      <div class="text-3xl font-bold">
+        <i class="fas fa-search"></i> 部品を検索する
+      </div>
+      <div class="">
+        <%= search_form_for @q, url: parts_search_path do |f| %>
+          <div class="mt-2 w-200">
+            <%= f.label :car_model_id_eq, "車種：" %>
+            <%= f.collection_select :car_model_id_eq, CarModel.order(:car_model_code), :id, :car_model_code, include_blank: '指定なし' %>
+          </div>
+          <div class="mt-2">
+            <%= f.label :part_name_id_eq, "部品名：" %>
+            <%= f.collection_select :part_name_id_eq, PartName.where.not(id: 1), :id, :name,  include_blank: '指定なし' %>
+          </div>
+          <div class="mt-2">
+            <%= f.label :product_number_eq, "品番：" %>
+            <%= f.collection_select :product_number_eq, @part_product_number.order(:product_number), :product_number, :product_number, include_blank: '指定なし' %>
+          </div>
+          <div class="mt-2">
+            <%= f.label :material_id_eq, "材質：" %>
+            <%= f.collection_select :material_id_eq, Material.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+          </div>
+          <div class="mt-2">
+            <%= f.label :thickness, "板厚：" %>
+            <%= f.radio_button :thickness_lteq, '' %>
+            指定なし
+            <br>
+            <%= f.radio_button :thickness_lteq, '10.00' %>
+            10.00mm以下
+            <%= f.radio_button :thickness_lteq, '20.00' %>
+            20.00mm以下
+            <br>
+            <%= f.radio_button :thickness_lteq, '30.00' %>
+            30.00mm以下
+            <%= f.radio_button :thickness_lteq, '40.00' %>
+            40.00mm以下
+          </div>
+          <div class="mt-2">
+            <%= f.label :weight, "質量：" %>
+            <%= f.radio_button :weight_lteq, '' %>
+            指定なし
+            <br>
+            <%= f.radio_button :weight_lteq, '1000.00' %>
+            1000.00g以下
+            <%= f.radio_button :weight_lteq, '3000.00' %>
+            3000.00g以下
+            <br>
+            <%= f.radio_button :weight_lteq, '5000.00' %>
+            5000.00g以下
+            <%= f.radio_button :weight_lteq, '10000.00' %>
+            10000.00g以下
+          </div>
+          <div class="mt-2">
+            <%= f.label :"仕入先" %>
+            <%= f.collection_select :supplier_id_eq, Supplier.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+          </div>
+          <div class="mt-2">
+            <button f.submit class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-1 rounded">
+              検索する
+            </button>
+          
+          <button name="button" type="reset" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-1 rounded">
+            リセットする
+          </button>
+          </div>
+        <% end %>
+      </div>
+    
+    <div class="text-3xl mt-8 font-bold">
+      <i class="fas fa-cogs"></i> 部品を登録する
+    </div>
+    <% @car_models.each do |car_model| %>
+      <%= link_to car_model.car_model_code, new_car_model_part_path(car_model) %>
+    <% end %>
+    
+    <div class="text-3xl mt-8 font-bold">
+      <i class="fas fa-car"></i> 車種を登録する
+    </div>
+    <%= form_with model: @car_model, local: true do |f| %>
+      <%= f.label :"車種" %>
+      <%= f.text_field :car_model_code, placeholder: "300C" %>
+      <button f.submit class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-1 rounded">
+        登録する
+      </button>
+    <% end %>
+</div>
+</div>
