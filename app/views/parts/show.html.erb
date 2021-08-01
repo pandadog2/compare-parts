@@ -40,7 +40,7 @@
       </div>
       <div class="mt-10 text-xs">
         <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-2 rounded">
-          <%= link_to "削除する", car_model_part_path, method: :delete %>
+          <%= link_to "削除する", car_model_part_path, method: :delete, data: {confirm: "品番：#{@part.product_number} 削除しますか？"} %>
         </button>
       </div>
     </div>
