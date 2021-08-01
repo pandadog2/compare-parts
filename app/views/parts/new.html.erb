@@ -8,7 +8,7 @@
     <%= render 'shared/error_messages', model: f.object %>
     <div class="field">
       <%= f.label :"図面" %>
-      <%= f.file_field :image %>
+      <%= f.file_field :image, id: 'message_image' %>
     </div>
     <div class="field">
       <%= f.label :"部品名" %>
@@ -35,5 +35,6 @@
       <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}, {class:"supplier-select"}) %>
     </div>
     <%= f.submit '登録する', class: 'form-submit' %>
+    <div id="image_list"></div>
   <% end %>
 </div>
