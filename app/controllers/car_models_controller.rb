@@ -9,11 +9,8 @@ class CarModelsController < ApplicationController
 
   def create
     @car_model = CarModel.new(car_model_params)
-    if @car_model.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @car_model.save
+    redirect_to root_path
   end
 
   private

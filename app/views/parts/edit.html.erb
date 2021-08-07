@@ -3,7 +3,7 @@
 <%= form_with(model: @part, url: car_model_part_path, local: true) do |f| %>
   <div class="part-content">
     <%= f.label :"図面" %>
-    <%= f.file_field :image, id: 'message_image' %>
+    <%= f.file_field :image, id: 'part_image' %>
   </div>
   <div class="field">
     <%= f.label :"車種" %>
@@ -35,4 +35,8 @@
   </div>
   <%= f.submit '登録', class: 'form-submit' %>
   <div id="image_list"></div>
+<% end %>
+
+<% @part.images.each do |image| %>
+  <%= image_tag image, class: 'images' %>
 <% end %>

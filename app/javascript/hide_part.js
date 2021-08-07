@@ -1,3 +1,5 @@
+'use strict';
+
 const hide_part = () => {
   const hide_btn = document.getElementsByClassName('hide_btn');
   const hide_area = document.getElementsByClassName('hide_area');

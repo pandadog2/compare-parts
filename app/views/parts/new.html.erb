@@ -8,7 +8,7 @@
     <%= render 'shared/error_messages', model: f.object %>
     <div class="field">
       <%= f.label :"図面" %>
-      <%= f.file_field :image, id: 'message_image' %>
+      <%= f.file_field :images, name: 'part[images][]', id: 'part_image' %>
     </div>
     <div class="field">
       <%= f.label :"部品名" %>
@@ -36,5 +36,9 @@
     </div>
     <%= f.submit '登録する', class: 'form-submit' %>
     <div id="image_list"></div>
+  <% end %>
+
+  <% @part.images.each do |image| %>
+    <%= image_tag image, class: 'images' %>
   <% end %>
 </div>

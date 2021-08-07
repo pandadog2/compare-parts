@@ -11,7 +11,9 @@
           <i class="far fa-times-circle fa-2x fa-pull-right fa-border hover:text-red-300 hide_btn"></i>
         </div>
         <div class="parts">
-          <%= image_tag result.image.variant(resize: "400x400") %>
+          <% result.images.each do |image| %>
+            <%= image_tag image.variant(resize: "400x400"), id: 'part_image' %>
+          <% end %>
         </div>
         <div class="p-1">
           <div class="p-1 bg-gray-200 rounded-md">
@@ -47,5 +49,5 @@
 </div>
 
 <div id="page_top">
-  <a href="#"><i class="fas fa-arrow-up text-5xl"></i></a>
+  <a href="#"><i class="arrow fas fa-arrow-up text-3xl"></i></a>
 </div>

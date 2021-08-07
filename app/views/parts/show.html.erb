@@ -1,8 +1,10 @@
 <%= render "shared/header" %>
 
 <div class="flex">
-  <div class="m-8">
-    <%= image_tag @part.image.variant(resize: "850x850"), name: 'part[images][]', id: 'part-image' %>
+  <div class="m-8" id="slider">
+  <% @part.images.each do |image| %>
+    <%= image_tag image.variant(resize: "850x850"), name: 'part[images][]', id: 'part_image' %>
+  <% end %>
   </div>
   <div class="p-8 pt-16">
     <div class="p-1 text-3xl bg-gray-200 rounded-md">
