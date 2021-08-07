@@ -2,7 +2,7 @@
 
 <div class="flex">
   <div class="m-8">
-    <%= image_tag @part.image.variant(resize: "850x850"), class: 'part-image' %>
+    <%= image_tag @part.image.variant(resize: "850x850"), name: 'part[images][]', id: 'part-image' %>
   </div>
   <div class="p-8 pt-16">
     <div class="p-1 text-3xl bg-gray-200 rounded-md">
