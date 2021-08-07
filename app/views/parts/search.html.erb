@@ -10,7 +10,15 @@
         <div>
           <i class="far fa-times-circle fa-2x fa-pull-right fa-border hover:text-red-300 hide_btn"></i>
         </div>
-        <%= image_tag result.image.variant(resize: "400x400") %>
+        <div class="parts">
+          <% if result.images == 1 %>
+            <%= image_tag result.images[0].variant(resize: "400x400"), class: 'images' %>
+          <% else %>
+            <%= result.images.each do |image| %>
+              <%= image_tag image.variant(resize: "400x400"), class: 'images' %>
+            <% end %>
+          <% end %>
+        </div>
         <div class="p-1">
           <div class="p-1 bg-gray-200 rounded-md">
             車種：<%= result.car_model.car_model_code %>
