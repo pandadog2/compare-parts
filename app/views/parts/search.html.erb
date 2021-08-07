@@ -11,8 +11,10 @@
           <i class="far fa-times-circle fa-2x fa-pull-right fa-border hover:text-red-300 hide_btn"></i>
         </div>
         <div class="parts">
-          <% result.images.each do |image| %>
-            <%= image_tag image.variant(resize: "400x400"), id: 'part_image' %>
+          <% result.images.each_with_index do |image, index| %>
+            <%if index == 0 %>
+              <%= image_tag image.variant(resize: "400x400"), id: 'part_image' %>
+            <% end %>
           <% end %>
         </div>
         <div class="p-1">

@@ -1,42 +1,48 @@
 <%= render "shared/header" %>
 
-<%= form_with(model: @part, url: car_model_part_path, local: true) do |f| %>
-  <div class="part-content">
-    <%= f.label :"図面" %>
-    <%= f.file_field :image, id: 'part_image' %>
-  </div>
-  <div class="field">
-    <%= f.label :"車種" %>
-    <%= f.collection_select(:car_model_id, CarModel.order(:car_model_code), :id, :car_model_code, {}) %>
-  </div>
-  <div class="field">
-    <%= f.label :"部品名" %>
-    <%= f.collection_select(:part_name_id, PartName.all, :id, :name, {}, {class:"part-name-select"}) %>
-  </div>
-  <div class="field">
-    <%= f.label :"品番" %>
-    <%= f.text_field :product_number %>
-  </div>
-  <div class="field">
-    <%= f.label :"材質" %>
-    <%= f.collection_select(:material_id, Material.all, :id, :name, {}, {class:"material-select"}) %>
-  </div>
-  <div class="field">
-    <%= f.label :"板厚" %>
-    <%= f.text_field :thickness %>mm
-  </div>
-  <div class="field">
-    <%= f.label :"質量" %>
-    <%= f.text_field :weight %>g
-  </div>
-  <div class="field">
-    <%= f.label :"仕入先" %>
-    <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}, {class:"supplier-select"}) %>
-  </div>
-  <%= f.submit '登録', class: 'form-submit' %>
-  <div id="image_list"></div>
-<% end %>
+<div class="p-8">
+  <%= form_with(model: @part, url: car_model_part_path, local: true) do |f| %>
+    <div class="part-content">
+      <%= f.label :"図面" %>
+      <%= f.file_field :image, id: 'part_image' %>
+    </div>
+    <div class="field">
+      <%= f.label :"車種" %>
+      <%= f.collection_select(:car_model_id, CarModel.order(:car_model_code), :id, :car_model_code, {}) %>
+    </div>
+    <div class="field">
+      <%= f.label :"部品名" %>
+      <%= f.collection_select(:part_name_id, PartName.all, :id, :name, {}, {class:"part-name-select"}) %>
+    </div>
+    <div class="field">
+      <%= f.label :"品番" %>
+      <%= f.text_field :product_number %>
+    </div>
+    <div class="field">
+      <%= f.label :"材質" %>
+      <%= f.collection_select(:material_id, Material.all, :id, :name, {}, {class:"material-select"}) %>
+    </div>
+    <div class="field">
+      <%= f.label :"板厚" %>
+      <%= f.text_field :thickness %>mm
+    </div>
+    <div class="field">
+      <%= f.label :"質量" %>
+      <%= f.text_field :weight %>g
+    </div>
+    <div class="field">
+      <%= f.label :"仕入先" %>
+      <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}, {class:"supplier-select"}) %>
+    </div>
+    <%= f.submit '登録', class: 'form-submit' %>
+    <div id="image_list"></div>
+  <% end %>
 
-<% @part.images.each do |image| %>
-  <%= image_tag image, class: 'images' %>
-<% end %>
+  <% @part.images.each do |image| %>
+    <%= image_tag image, class: 'images' %>
+  <% end %>
+</div>
+
+<div id="page_top">
+  <a href="#"><i class="arrow fas fa-arrow-up text-3xl"></i></a>
+</div>

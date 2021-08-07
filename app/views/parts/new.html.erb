@@ -7,7 +7,7 @@
   <%= form_with(model: [@car_model, @part], local: true) do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <div class="field">
-      <%= f.label :"図面" %>
+      <%= f.label :"図面（png, jpg, jpeg形式で、１枚につき２ＭＢ以内、最大５枚まで登録できます）" %>
       <%= f.file_field :images, name: 'part[images][]', id: 'part_image' %>
     </div>
     <div class="field">
@@ -41,4 +41,8 @@
   <% @part.images.each do |image| %>
     <%= image_tag image, class: 'images' %>
   <% end %>
+</div>
+
+<div id="page_top">
+  <a href="#"><i class="arrow fas fa-arrow-up text-3xl"></i></a>
 </div>
