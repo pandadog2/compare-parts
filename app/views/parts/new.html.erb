@@ -7,8 +7,8 @@
   <%= form_with(model: [@car_model, @part], local: true) do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <div class="field">
-      <%= f.label :"図面（png, jpg, jpeg形式で、１枚につき２ＭＢ以内、最大５枚まで登録できます）" %>
-      <%= f.file_field :images, name: 'part[images][]', id: 'part_image' %>
+      <%= f.label :"図面（png, jpg, jpeg形式で、1枚につき2ＭＢＭＢ以内、最大5枚まで登録できます）" %>
+      <%= f.file_field :images, name: 'part[images][]', id: 'part_image', class: 'part_image' %>
     </div>
     <div class="field">
       <%= f.label :"部品名" %>

@@ -1,40 +1,40 @@
 <%= render "shared/header" %>
 
-<div class="flex">
-  <div class="m-8" id="slider">
-  <% @part.images.each do |image| %>
-    <%= image_tag image.variant(resize: "850x850"), name: 'part[images][]', id: 'part_image' %>
-  <% end %>
+<div class="flex wrapper h-screen bg-gray-600">
+  <div class="m-8 slider">
+    <% @part.images.each do |image| %>
+      <%= image_tag image, name: 'part[images][]', class: 'show_image' %>
+    <% end %>
   </div>
-  <div class="p-8 pt-16">
-    <div class="p-1 text-3xl bg-gray-200 rounded-md">
+  <div class="p-8 mt-8 mb-8 bg-white rounded-md">
+    <div class="p-1 sm:text-1xl md:text-2xl lg:text-3xl bg-gray-200 rounded-md">
       車種：<%= @part.car_model.car_model_code %>
     </div>
-    <div class="mt-2 text-3xl">
+    <div class="mt-2 sm:text-1xl md:text-2xl lg:text-3xl">
       部品名 ： <%= @part.part_name.name %>
     </div>
-    <div class="mt-2 p-1 text-3xl bg-gray-200 rounded-md">
+    <div class="mt-2 p-1 sm:text-1xl md:text-2xl lg:text-3xl bg-gray-200 rounded-md">
       品番 ： <%= @part.product_number %>
     </div>
-    <div class="mt-2 text-3xl">
+    <div class="mt-2 sm:text-1xl md:text-2xl lg:text-3xl">
       材質 ： <%= @part.material.name %>
     </div>
-    <div class="mt-2 text-3xl p-1 bg-gray-200 rounded-md">
+    <div class="mt-2 sm:text-1xl md:text-2xl lg:text-3xl p-1 bg-gray-200 rounded-md">
       板厚 ： <%= @part.thickness %>mm
     </div>
-    <div class="mt-2 text-3xl">
+    <div class="mt-2 sm:text-1xl md:text-2xl lg:text-3xl">
       質量 ： <%= @part.weight %>g
     </div>
-    <div class="mt-2 p-1 text-3xl bg-gray-200 rounded-md">
+    <div class="mt-2 p-1 sm:text-1xl md:text-2xl lg:text-3xl bg-gray-200 rounded-md">
       仕入先 ： <%= @part.supplier.name %>
     </div>
-    <div class="mt-8 text-2xl">
+    <div class="mt-8 sm:text-1xl md:text-1xl lg:text-2xl">
       登録者 ： <%= @part.user.name %>
     </div>
-    <div class="mt-2 text-2xl">
+    <div class="mt-2 sm:text-1xl md:text-1xl lg:text-2xl">
       登録日 ： <%= @part.created_at.strftime('%Y/%m/%d') %>
     </div>
-    <div class="flex">
+    <div class="flex justify-center">
       <div class="mt-10 text-xs">
         <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-2 rounded">
           <%= link_to "修正する", edit_car_model_part_path %>
@@ -48,5 +48,6 @@
     </div>
     </div>
   </div>
+</div>
 </div>
 </div>

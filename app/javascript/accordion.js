@@ -1,6 +1,6 @@
 'use strict'; //厳密なエラーチェックができる
 
-Object.onload = function () {
+window.onload = function () {
   const dts = document.querySelectorAll('dt');
 
   dts.forEach(dt => {
