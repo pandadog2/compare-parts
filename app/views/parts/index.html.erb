@@ -5,7 +5,7 @@
       <%= image_tag 'tacoma.jpg', size: "1000x600" %>
     </div>
 
-    <div class="m-4 w-1/2">
+    <div class="m-4 w-1/3">
       <dl class="bg-gray-50 rounded-md">
         <div>
           <dt class="text-2xl font-bold"><i class="fas fa-search"></i> 部品を検索する</dt>
@@ -21,7 +21,7 @@
             </div>
             <div class="mt-2">
               <%= f.label :product_number_eq, "品番：" %>
-              <%= f.collection_select :product_number_eq, @part_product_number.order(:product_number), :product_number, :product_number, include_blank: '指定なし' %>
+              <%= f.search_field :product_number_cont %>
             </div>
             <div class="mt-2">
               <%= f.label :material_id_eq, "材質：" %>
@@ -32,28 +32,32 @@
               <%= f.radio_button :thickness_lteq, '' %>
               指定なし
               <br>
-              <%= f.radio_button :thickness_lteq, '10.00' %>
-              10.00mm以下
-              <%= f.radio_button :thickness_lteq, '20.00' %>
-              20.00mm以下
-              <%= f.radio_button :thickness_lteq, '30.00' %>
-              30.00mm以下
-              <%= f.radio_button :thickness_lteq, '40.00' %>
-              40.00mm以下
+              <%= f.radio_button :thickness_lteq, '25.00' %>
+              25.00mm以下
+              <br>
+              <%= f.radio_button :thickness_lteq, '50.00' %>
+              50.00mm以下
+              <br>
+              <%= f.radio_button :thickness_lteq, '75.00' %>
+              75.00mm以下
+              <br><%= f.radio_button :thickness_lteq, '99.99' %>
+              99.99mm以下
             </div>
             <div class="mt-2">
               <%= f.label :weight, "質量：" %>
               <%= f.radio_button :weight_lteq, '' %>
               指定なし
               <br>
-              <%= f.radio_button :weight_lteq, '1000.00' %>
-              1000.00g以下
-              <%= f.radio_button :weight_lteq, '3000.00' %>
-              3000.00g以下
-              <%= f.radio_button :weight_lteq, '5000.00' %>
-              5000.00g以下
-              <%= f.radio_button :weight_lteq, '10000.00' %>
-              10000.00g以下
+              <%= f.radio_button :weight_lteq, '25000.00' %>
+              25,000.00g以下
+              <br><%= f.radio_button :weight_lteq, '50000.00' %>
+              50,000.00g以下
+              <br>
+              <%= f.radio_button :weight_lteq, '75000.00' %>
+              75,000.00g以下
+              <br>
+              <%= f.radio_button :weight_lteq, '99999.99' %>
+              99,999.99g以下
             </div>
             <div class="mt-2">
               <%= f.label :"仕入先" %>
@@ -75,7 +79,7 @@
           <dt class="text-2xl font-bold"><i class="fas fa-cogs"></i> 部品を登録する</dt>
           <dd>
             <% @car_models.each do |car_model| %>
-            <div class="m-2 ring ring-gray-300 rounded">
+            <div class="btn m-2 ring ring-gray-300 rounded">
             <%= link_to car_model.car_model_code, new_car_model_part_path(car_model) %>
             </div>
             <% end %>
@@ -86,7 +90,8 @@
           <dt class="text-2xl font-bold"><i class="fas fa-car"></i> 車種を登録する</dt>
           <dd>
             <%= form_with model: @car_model, local: true do |f| %>
-              <%= f.label :"車種" %>
+            <%= render 'shared/error_messages', model: f.object %>
+              <%= f.label :"車種：" %>
               <%= f.text_field :car_model_code, placeholder: "300C" %>
               <button f.submit class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 m-2 px-1 rounded">
                 登録する
@@ -98,24 +103,3 @@
     </div>
   </div>
 </div>
-
-<script>
-'use strict'; //厳密なエラーチェックができる
-
-{
-  const dts = document.querySelectorAll('dt');
-
-  dts.forEach(dt => {
-    dt.addEventListener('click', () => {
-      dt.parentNode.classList.toggle('appear');      // クリックした親要素にappearクラスをつける（cssで表示する）
-
-      dts.forEach(el => {                            // クリックしたdtとクリックしていないdt（エレメントのelとする）を判別する
-        if (dt !== el) {
-          el.parentNode.classList.remove('appear');  // クリックした親要素からappearクラスを削除する（cssで非表示にする）
-        }
-      });
-    });
-  });
-}
-</script>
-<script src="js/main.js"></script>

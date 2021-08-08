@@ -59,11 +59,11 @@ class PartsController < ApplicationController
   private
 
   def part_params
-    params.require(:part).permit(:image, :product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id).merge(user_id: current_user.id, car_model_id: params[:car_model_id])
+    params.require(:part).permit(:product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id, images: []).merge(user_id: current_user.id, car_model_id: params[:car_model_id])
   end
 
   def part_update_params
-    params.require(:part).permit(:car_model_id, :image, :product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id)
+    params.require(:part).permit(:car_model_id, :product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id, images: [])
   end
 
   def search_part
