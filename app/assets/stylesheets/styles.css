@@ -81,12 +81,17 @@ dl > div.appear dd {
   text-align: center;
 }
 
-.slider {
+.show_slider {
   width: 67vw;
 }
 
-.slider image {
+.show_slider image {
   width: 50%;
   height: 50vw;
   object-fit: cover;
 }
+
+.slick-prev:before,
+ .slick-next:before {
+   color: black;
+ }

@@ -7,15 +7,15 @@ RSpec.describe Part, type: :model do
 
   describe 'partの保存' do
     context 'partが登録できる場合' do
-      it 'image、part_name_id、product_number、material_id、thickness、weight、supplier_idがあれば登録できる' do
+      it 'images、part_name_id、product_number、material_id、thickness、weight、supplier_idがあれば登録できる' do
         expect(@part).to be_valid
       end
     end
     context 'partが登録できない場合' do
-      it 'imageが空ではできない' do
-        @part.image = nil
+      it 'imagesが空では登録できない' do
+        @part.images = nil
         @part.valid?
-        expect(@part.errors.full_messages).to include("Image can't be blank")
+        expect(@part.errors.full_messages).to include("Images can't be blank")
       end
       it 'part_name_idが空では登録できない' do
         @part.part_name_id = ''
@@ -65,19 +65,19 @@ RSpec.describe Part, type: :model do
         expect(@part.errors.full_messages).to include("Thickness can't be blank")
       end
       it 'thicknessは自然数のみでは登録できない' do
-        @part.thickness = '999999'
+        @part.thickness = '99'
         @part.valid?
-        expect(@part.errors.full_messages).to include("Thickness is 2 digits for the decimal part and 6 digits or less for the natural number part")
+        expect(@part.errors.full_messages).to include("Thickness is 2 digits for the decimal part and 2 digits or less for the natural number part")
       end
-      it 'thicknessは自然数部分が7桁以上では登録できない' do
-        @part.thickness = '1000000.00'
+      it 'thicknessは自然数部分が3桁以上では登録できない' do
+        @part.thickness = '100.00'
         @part.valid?
-        expect(@part.errors.full_messages).to include("Thickness is 2 digits for the decimal part and 6 digits or less for the natural number part")
+        expect(@part.errors.full_messages).to include("Thickness is 2 digits for the decimal part and 2 digits or less for the natural number part")
       end
       it 'thicknessは小数部分が3桁以上では登録できない' do
         @part.thickness = '0.001'
         @part.valid?
-        expect(@part.errors.full_messages).to include("Thickness is 2 digits for the decimal part and 6 digits or less for the natural number part")
+        expect(@part.errors.full_messages).to include("Thickness is 2 digits for the decimal part and 2 digits or less for the natural number part")
       end
       it 'weightが空では登録できない' do
         @part.weight = ''
@@ -85,19 +85,19 @@ RSpec.describe Part, type: :model do
         expect(@part.errors.full_messages).to include("Weight can't be blank")
       end
       it 'weightは自然数のみでは登録できない' do
-        @part.weight = '999999'
+        @part.weight = '99999'
         @part.valid?
-        expect(@part.errors.full_messages).to include("Weight is 2 digits for the decimal part and 6 digits or less for the natural number part")
+        expect(@part.errors.full_messages).to include("Weight is 2 digits for the decimal part and 5 digits or less for the natural number part")
       end
-      it 'weightは自然数部分が7桁以上では登録できない' do
-        @part.weight = '1000000.00'
+      it 'weightは自然数部分が6桁以上では登録できない' do
+        @part.weight = '100000.00'
         @part.valid?
-        expect(@part.errors.full_messages).to include("Weight is 2 digits for the decimal part and 6 digits or less for the natural number part")
+        expect(@part.errors.full_messages).to include("Weight is 2 digits for the decimal part and 5 digits or less for the natural number part")
       end
       it 'weightは小数部分が3桁以上では登録できない' do
         @part.weight = '0.001'
         @part.valid?
-        expect(@part.errors.full_messages).to include("Weight is 2 digits for the decimal part and 6 digits or less for the natural number part")
+        expect(@part.errors.full_messages).to include("Weight is 2 digits for the decimal part and 5 digits or less for the natural number part")
       end
       it 'supplier_idが空では登録できない' do
         @part.supplier_id = ''
