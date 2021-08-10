@@ -1,7 +1,7 @@
 <header>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <div class="p-8 bg-gray-900 flex items-center text-gray-50 justify-between">
-    <h1 class="font-bold text-4xl ">CarParts</h1>
+    <%= link_to "CarParts", root_path, class: "font-bold text-4xl" %> 
   
     <div class="flex">
       <% if user_signed_in? %>
@@ -12,7 +12,7 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </div>
       <% else %>
-      <div>
+      <div class="mx-10">
         <%= link_to "ログイン", new_user_session_path %>
       </div>
       <div>
