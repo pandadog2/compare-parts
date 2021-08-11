@@ -1,46 +1,49 @@
-<div class="py-8 px-24 text-2xl origin-center">
+<div class="part py-8 px-24 text-2xl">
   <div class="mb-4 text-3xl font-bold">
     <i class="fas fa-cogs"></i> <%= @part.car_model.car_model_code %>の部品を編集する
   </div>
   <%= form_with(model: @part, url: car_model_part_path, local: true) do |f| %>
     <div class="mb-2">
-      <%= f.label :"図面(png, jpg, jpeg形式で、1枚につき2ＭＢ以内、最大5枚まで登録できます)" %>
+      <%= f.label :"図面：" %>
       <%= f.file_field :image, id: 'part_image', style: 'border: none' %>
     </div>
     <div class="mb-2">
-      <%= f.label :"車種" %>
+      <%= f.label :"車種：" %>
       <%= f.collection_select(:car_model_id, CarModel.order(:car_model_code), :id, :car_model_code, {}) %>
     </div>
     <div class="mb-2">
-      <%= f.label :"部品名" %>
-      <%= f.collection_select(:part_name_id, PartName.all, :id, :name, {}, {class:"part-name-select"}) %>
+      <%= f.label :"部品名：" %>
+      <%= f.collection_select(:part_name_id, PartName.all, :id, :name, {}) %>
     </div>
     <div class="mb-2">
-      <%= f.label :"品番" %>
+      <%= f.label :"品番：" %>
       <%= f.text_field :product_number %>
     </div>
     <div class="mb-2">
-      <%= f.label :"材質" %>
-      <%= f.collection_select(:material_id, Material.all, :id, :name, {}, {class:"material-select"}) %>
+      <%= f.label :"材質：" %>
+      <%= f.collection_select(:material_id, Material.all, :id, :name, {}) %>
     </div>
     <div class="mb-2">
-      <%= f.label :"板厚" %>
+      <%= f.label :"板厚：" %>
       <%= f.text_field :thickness %>mm
     </div>
     <div class="mb-2">
-      <%= f.label :"質量" %>
+      <%= f.label :"質量：" %>
       <%= f.text_field :weight %>g
     </div>
     <div class="mb-4">
-      <%= f.label :"仕入先" %>
-      <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}, {class:"supplier-select"}) %>
+      <%= f.label :"仕入先：" %>
+      <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}) %>
     </div>
     <%= f.submit '登録する', class: 'form-submit p-2' %>
     <div id="image_list"></div>
   <% end %>
 
   <% @part.images.each do |image| %>
-    <%= image_tag image, class: 'images' %>
+    <%= image_tag image, class: 'delete_image' %>
+    <button class="delete_btn text-xs text-white font-bold bg-gray-500 hover:bg-gray-700 p-2 m-2 rounded">
+      上の画像を削除する
+    </button>
   <% end %>
 </div>
 

@@ -1,4 +1,6 @@
 class PartsController < ApplicationController
+  before_action :new_part, only: [:new, :create]
+  before_action :edit_part, only: [:edit, :update, :destroy]
   before_action :search_part, only: [:index, :search]
 
   def index
@@ -9,12 +11,10 @@ class PartsController < ApplicationController
   end
 
   def new
-    @car_model = CarModel.find(params[:car_model_id])
     @part = Part.new
   end
 
   def create
-    @car_model = CarModel.find(params[:car_model_id])
     @part = Part.new(part_params)
     if @part.save
       redirect_to car_model_part_path(id: @part)
@@ -28,11 +28,9 @@ class PartsController < ApplicationController
   end
 
   def edit
-    @part = Part.find(params[:id])
   end
 
   def update
-    @part = Part.find(params[:id])
     if @part.update(part_update_params)
       redirect_to car_model_part_path(id: @part)
     else
@@ -66,9 +64,19 @@ class PartsController < ApplicationController
     params.require(:part).permit(:car_model_id, :product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id, images: [])
   end
 
+  def new_part
+    @car_model = CarModel.find(params[:car_model_id])
+  end
+  
+  def edit_part
+    @part = Part.find(params[:id])
+    if @part.user_id != current_user.id
+      redirect_to car_model_part_path(id: @part)
+    end
+  end
+
   def search_part
     @q = Part.ransack(params[:q])
-    
   end
 
   def set_part_column
