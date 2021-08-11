@@ -43,6 +43,11 @@ form input[type="submit"]:hover {
   width: 300px;
 }
 
+.part {
+  margin: 32px auto;
+  width: 800px;
+}
+
 dl {
   margin: 0;
 }

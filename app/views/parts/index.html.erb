@@ -14,19 +14,19 @@
               <%= f.label :car_model_id_eq, "車種：" %>
               <%= f.collection_select :car_model_id_eq, CarModel.order(:car_model_code), :id, :car_model_code, include_blank: '指定なし' %>
             </div>
-            <div>
+            <div class="mb-2">
               <%= f.label :part_name_id_eq, "部品名：" %>
               <%= f.collection_select :part_name_id_eq, PartName.where.not(id: 1), :id, :name,  include_blank: '指定なし' %>
             </div>
-            <div>
+            <div class="mb-2">
               <%= f.label :product_number_eq, "品番：" %>
               <%= f.search_field :product_number_cont %>
             </div>
-            <div>
+            <div class="mb-2">
               <%= f.label :material_id_eq, "材質：" %>
               <%= f.collection_select :material_id_eq, Material.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
             </div>
-            <div>
+            <div class="mb-2">
               <%= f.label :thickness, "板厚：" %>
               <label><%= f.radio_button :thickness_lteq, '' %> 指定なし</label>
               <br>
@@ -38,7 +38,7 @@
               <br>
               <label><%= f.radio_button :thickness_lteq, '99.99' %> 99.99mm以下</label>
             </div>
-            <div>
+            <div class="mb-2">
               <%= f.label :weight, "質量：" %>
               <label><%= f.radio_button :weight_lteq, '' %> 指定なし</label>
               <br>
