@@ -37,12 +37,17 @@ RSpec.describe @user, type: :model do
       it 'nameに全角英字は使用できない' do
         @user.name = 'ＮＡＭＥ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name is other than numbers and double-byte alphabets")
+        expect(@user.errors.full_messages).to include("Name is other than numbers, double-byte alphabets, and double-byte spaces")
       end
       it 'nameに数字は使用できない' do
         @user.name = '123'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name is other than numbers and double-byte alphabets")
+        expect(@user.errors.full_messages).to include("Name is other than numbers, double-byte alphabets, and double-byte spaces")
+      end
+      it 'nameに全角スペースは使用できない' do
+        @user.name = '　'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name is other than numbers, double-byte alphabets, and double-byte spaces")
       end
       it 'nameが11文字以上では登録できない' do
         @user.name = 'a' * 11
