@@ -12,5 +12,4 @@ class Supplier < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :parts
-
 end

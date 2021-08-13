@@ -18,5 +18,4 @@ class CarModelsController < ApplicationController
   def car_model_params
     params.require(:car_model).permit(:car_model_code).merge(user_id: current_user.id)
   end
-
 end

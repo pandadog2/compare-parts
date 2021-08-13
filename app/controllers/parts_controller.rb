@@ -67,7 +67,7 @@ class PartsController < ApplicationController
   def new_part
     @car_model = CarModel.find(params[:car_model_id])
   end
-  
+
   def edit_part
     @part = Part.find(params[:id])
     if @part.user_id != current_user.id
@@ -80,8 +80,7 @@ class PartsController < ApplicationController
   end
 
   def set_part_column
-    @part_part_name = Part.select("part_name_id").distinct
-    @part_product_number = Part.select("product_number").distinct
+    @part_part_name = Part.select('part_name_id').distinct
+    @part_product_number = Part.select('product_number').distinct
   end
-
 end

@@ -12,5 +12,4 @@ class PartName < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :parts
-  
 end

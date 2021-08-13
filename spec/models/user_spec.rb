@@ -16,7 +16,7 @@ RSpec.describe @user, type: :model do
       end
       it 'nameが10文字以下であれば登録できる' do
         @user.name = 'aaaaaaaaaa'
-        expect(@user).to be_valid 
+        expect(@user).to be_valid
       end
       it 'emailに@が含まれていれば登録できる' do
         @user.email = 'test@test'
@@ -37,22 +37,22 @@ RSpec.describe @user, type: :model do
       it 'nameに全角英字は使用できない' do
         @user.name = 'ＮＡＭＥ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name is other than numbers, double-byte alphabets, and double-byte spaces")
+        expect(@user.errors.full_messages).to include('Name is other than numbers, double-byte alphabets, and double-byte spaces')
       end
       it 'nameに数字は使用できない' do
         @user.name = '123'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name is other than numbers, double-byte alphabets, and double-byte spaces")
+        expect(@user.errors.full_messages).to include('Name is other than numbers, double-byte alphabets, and double-byte spaces')
       end
       it 'nameに全角スペースは使用できない' do
         @user.name = '　'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name is other than numbers, double-byte alphabets, and double-byte spaces")
+        expect(@user.errors.full_messages).to include('Name is other than numbers, double-byte alphabets, and double-byte spaces')
       end
       it 'nameが11文字以上では登録できない' do
         @user.name = 'a' * 11
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name is too long (maximum is 10 characters)")
+        expect(@user.errors.full_messages).to include('Name is too long (maximum is 10 characters)')
       end
       it 'emailが空では登録できない' do
         @user.email = ''
@@ -69,7 +69,7 @@ RSpec.describe @user, type: :model do
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("Email has already been taken")
+        expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'passwordが空では登録できない' do
         @user.password = ''
