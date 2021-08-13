@@ -68,10 +68,14 @@
         <div>
           <dt class="text-2xl font-bold"><i class="fas fa-cogs"></i> 部品を登録する</dt>
           <dd>
-            <% @car_models.each do |car_model| %>
-            <div class="btn m-2 ring ring-gray-300 rounded">
-            <%= link_to car_model.car_model_code, new_car_model_part_path(car_model) %>
-            </div>
+            <% if @car_models.length != 0 %>
+              <% @car_models.each do |car_model| %>
+              <div class="btn m-2 ring ring-gray-300 rounded">
+                <%= link_to car_model.car_model_code, new_car_model_part_path(car_model) %>
+              </div>
+              <% end %>
+            <% else %>
+              車種を登録してください
             <% end %>
           </dd>
         </div>
