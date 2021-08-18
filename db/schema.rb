@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_07_24_075125) do
     t.string "thickness", null: false
     t.string "weight", null: false
     t.integer "supplier_id", null: false
+    t.date "approval_date", null: false
     t.bigint "user_id", null: false
     t.bigint "car_model_id", null: false
     t.datetime "created_at", precision: 6, null: false

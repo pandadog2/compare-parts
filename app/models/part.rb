@@ -8,7 +8,7 @@ class Part < ApplicationRecord
   has_many_attached :images
 
   with_options presence: true do
-    validates :images, :product_number, :thickness, :weight
+    validates :images, :product_number, :thickness, :weight, :approval_date
   end
 
   with_options presence: true, numericality: { other_than: 1 } do
