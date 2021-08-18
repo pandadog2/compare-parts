@@ -28,9 +28,13 @@
       <%= f.label :"質量：" %>
       <%= f.text_field :weight %>g
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <%= f.label :"仕入先：" %>
       <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}) %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :"承認日：" %>
+      <%= f.date_select :approval_date %>
     </div>
     <%= f.submit '登録する', class: 'form-submit p-2' %>
     <div id="image_list"></div>
