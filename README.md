@@ -5,11 +5,12 @@
   
 - ペルソナ  
 自動車会社で働いている20〜30代サラリーマン  
+打ち合わせが多く、自席に座る時間もないほど忙しい  
 部品の設計を依頼する際に、過去の図面をシステムで検索して参考にしている  
-一件ずつしか見られないので比較するために印刷をすることもあり、とても不便に感じている  
+部品情報は一件ずつしか見られないため、比較するために印刷をすることもあり、とても不便に感じている  
   
 - 課題解決  
-一画面で比較ができる  
+部品情報を一画面で比較できる  
   
 [こちらからご利用いただけます](http://35.75.155.206:/)  
 
@@ -25,7 +26,6 @@ password: pass22
 
 ### 車種登録
 新車種の開発が決まったら車種コードを登録します。  
-編集・削除はできないので間違えずに入力してください。  
 
 ### 部品登録
 以下の条件で登録できます  
@@ -36,6 +36,7 @@ password: pass22
 板厚(mm)：2桁.2桁 （例）10.55  
 質量(g)：5桁.2桁 (例)99999.99  
 仕入先：選択式  
+承認日：選択式  
 
 ### 部品編集・削除
 部品登録したユーザーとログイン中のユーザーが同じ場合のみ編集・削除ができます。  
@@ -51,35 +52,8 @@ password: pass22
 検索結果を誤って非表示にしてしまった時はリロードすると元に戻ります。  
 検索結果が1件の場合は詳細ページへ遷移します。検索結果を変えて検索し直してください。  
 
-## テーブル設計
-### users テーブル
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| name               | string  | null: false |
-| email              | string  | null: false |
-| encrypted_password | string  | null: false |
-Association
-- has_many :car_models
-- has_many :parts
+## 要件定義
+[![Image from Gyazo](https://i.gyazo.com/911951337d6c24fa97e4a06c6a4ba8e5.png)](https://gyazo.com/911951337d6c24fa97e4a06c6a4ba8e5)  
 
-### car_types テーブル
-| Column         | Type   | Options     |
-| -------------- | ------ | ----------- |
-| car_model_code | string | null: false |
-Association
-- belongs_to :user
-- has_many :parts
-
-### parts テーブル
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| product_number  | string     | null: false                    |
-| material_id     | integer    | null: false                    |
-| thickness       | string     | null: false                    |
-| weight          | string     | null: false                    |
-| supplier_id     | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
-| car_model_code  | references | null: false, foreign_key: true | 
-Association
-- belongs_to :user
-- belongs_to :car_model
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/0e6e51cf1561acd0a58832883de2a891.png)](https://gyazo.com/0e6e51cf1561acd0a58832883de2a891)  
