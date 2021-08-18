@@ -1,5 +1,3 @@
-'use strict';
-
 const delete_image = () => {
   const delete_btn = document.getElementsByClassName('delete_btn');
   const delete_image = document.getElementsByClassName('delete_image');

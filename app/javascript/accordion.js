@@ -1,5 +1,3 @@
-'use strict'; //厳密なエラーチェックができる
-
 window.onload = function () {
   const dts = document.querySelectorAll('dt');
 
