@@ -8,6 +8,7 @@ class CreateParts < ActiveRecord::Migration[6.0]
       t.string     :weight,         null: false
       t.integer    :supplier_id,    null: false
       t.date       :approval_date,  null: false
+      t.string     :reference_parts
       t.references :user,           null: false, foreign_key: true
       t.references :car_model,      null: false, foreign_key: true
       t.timestamps
