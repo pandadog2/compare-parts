@@ -19,4 +19,12 @@ class Part < ApplicationRecord
   validates :thickness, numericality: true, format: { with: /\A[0-9]{0,2}\.[0-9]{2}\z/, message: 'is 2 digits for the decimal part and 2 digits or less for the natural number part' }
   validates :weight, numericality: true, format: { with: /\A[0-9]{0,5}\.[0-9]{2}\z/, message: 'is 2 digits for the decimal part and 5 digits or less for the natural number part' }
   validates :images, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..2.megabytes }
+
+  validate :approval_date_cannot_be_in_the_future
+
+  def approval_date_cannot_be_in_the_future
+    if approval_date > Date.today
+      errors.add(:approval_date, 'is cannot be in the future')
+    end
+  end
 end
