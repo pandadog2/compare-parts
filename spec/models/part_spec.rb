@@ -7,7 +7,7 @@ RSpec.describe Part, type: :model do
 
   describe 'partの保存' do
     context 'partが登録できる場合' do
-      it 'images、part_name_id、product_number、material_id、thickness、weight、supplier_idがあれば登録できる' do
+      it 'images、part_name_id、product_number、material_id、thickness、weight、supplier_id、approval_dateがあれば登録できる' do
         expect(@part).to be_valid
       end
     end
