@@ -8,6 +8,7 @@
       <%= f.label :"図面：" %>
       <%= f.file_field :images, name: 'part[images][]', id: 'part_image', style: 'border: none' %>
     </div>
+    <div id="image_list"></div>
     <div class="mb-2">
       <%= f.label :"部品名：" %>
       <%= f.collection_select(:part_name_id, PartName.all, :id, :name, {}) %>
@@ -34,10 +35,9 @@
     </div>
     <div class="mb-4">
       <%= f.label :"承認日：" %>
-      <%= f.date_select :approval_date %>
+      <%= f.date_select :approval_date, start_year: 2000, end_year:(Time.now.year) %>
     </div>
     <%= f.submit '登録する', class: 'form-submit p-2' %>
-    <div id="image_list"></div>
   <% end %>
 </div>
 
