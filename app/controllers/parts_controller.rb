@@ -31,6 +31,7 @@ class PartsController < ApplicationController
   end
 
   def update
+    @part.images.detach #紐づいている画像を削除
     if @part.update(part_update_params)
       redirect_to car_model_part_path(id: @part)
     else
@@ -57,11 +58,11 @@ class PartsController < ApplicationController
   private
 
   def part_params
-    params.require(:part).permit(:product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id, :approval_date, images: []).merge(user_id: current_user.id, car_model_id: params[:car_model_id])
+    params.require(:part).permit(:product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id, :approval_date, :reference_parts, images: []).merge(user_id: current_user.id, car_model_id: params[:car_model_id])
   end
 
   def part_update_params
-    params.require(:part).permit(:car_model_id, :product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id, :approval_date, images: [])
+    params.require(:part).permit(:car_model_id, :product_number, :part_name_id, :material_id, :thickness, :weight, :supplier_id, :approval_date, :reference_parts, images: [])
   end
 
   def new_part
