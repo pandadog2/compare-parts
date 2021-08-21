@@ -33,9 +33,13 @@
       <%= f.label :"仕入先：" %>
       <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}) %>
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <%= f.label :"承認日：" %>
       <%= f.date_select :approval_date, start_year: 2000, end_year:(Time.now.year) %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :"参考部品：" %>
+      <%= f.collection_select(:reference_parts, Part.order(:product_number), :product_number, :product_number, prompt: "--") %>
     </div>
     <%= f.submit '登録する', class: 'form-submit p-2' %>
   <% end %>

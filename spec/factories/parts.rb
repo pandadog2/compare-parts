@@ -7,6 +7,7 @@ FactoryBot.define do
     weight                { '500.00' }
     supplier_id           { Faker::Number.between(from: 2, to: 8) }
     approval_date         { Faker::Date.backward }
+    reference_parts       { '00000-00000' }
     association :user
     association :car_model
 

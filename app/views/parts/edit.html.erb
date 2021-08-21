@@ -3,10 +3,18 @@
     <i class="fas fa-cogs"></i> <%= @part.car_model.car_model_code %>の部品を編集する
   </div>
   <%= form_with(model: @part, url: car_model_part_path, local: true) do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <% @part.images.each do |image| %>
+      <%= image_tag image, class: 'delete_image' %>
+    <% end %>
+    <div class="mt-2 mb-2 text-lg font-bold text-blue-600">
+      ※図面を選択すると、登録済みの図面が削除されます
+    </div>
     <div class="mb-2">
       <%= f.label :"図面：" %>
-      <%= f.file_field :image, id: 'part_image', style: 'border: none' %>
+      <%= f.file_field :images, name: 'part[images][]', id: 'part_image', style: 'border: none' %>
     </div>
+    <div id="image_list"></div>
     <div class="mb-2">
       <%= f.label :"車種：" %>
       <%= f.collection_select(:car_model_id, CarModel.order(:car_model_code), :id, :car_model_code, {}) %>
@@ -35,19 +43,15 @@
       <%= f.label :"仕入先：" %>
       <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}) %>
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <%= f.label :"承認日：" %>
       <%= f.date_select :approval_date %>
     </div>
+    <div class="mb-4">
+      <%= f.label :"参考部品：" %>
+      <%= f.collection_select(:reference_parts, Part.order(:product_number), :product_number, :product_number, prompt: "--") %>
+    </div>
     <%= f.submit '登録する', class: 'form-submit p-2' %>
-    <div id="image_list"></div>
-  <% end %>
-
-  <% @part.images.each do |image| %>
-    <%= image_tag image, class: 'delete_image' %>
-    <button class="delete_btn text-xs text-white font-bold bg-gray-500 hover:bg-gray-700 p-2 m-2 rounded">
-      上の画像を削除する
-    </button>
   <% end %>
 </div>
 
