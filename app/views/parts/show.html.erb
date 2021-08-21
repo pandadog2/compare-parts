@@ -27,11 +27,16 @@
       仕入先 ： <%= @part.supplier.name %>
     </div>
     <div class="mt-8 sm:text-1xl md:text-1xl" >
-      登録者 ： <%= @part.user.name %>
-    </div>
-    <div class="mt-2 sm:text-1xl md:text-1xl" >
       承認日 ： <%= @part.approval_date %>
     </div>
+    <div class="mt-2 sm:text-1xl md:text-1xl" >
+      登録者 ： <%= @part.user.name %>
+    </div>
+    <% if @part.reference_parts.presence %>
+      <div class="mt-2 sm:text-1xl md:text-1xl" >
+        参考部品 ： <%= @part.reference_parts %>
+      </div>
+    <% end %>
     <% if @part.user.id == current_user.id %>
       <div class="flex justify-center">
         <div class="mt-10 text-xs">
