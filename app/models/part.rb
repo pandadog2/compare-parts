@@ -21,10 +21,16 @@ class Part < ApplicationRecord
   validates :images, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..2.megabytes }
 
   validate :approval_date_cannot_be_in_the_future
+  validate :reference_parts_and_product_number_must_not_be_the_same
 
   def approval_date_cannot_be_in_the_future
     if approval_date > Date.today
       errors.add(:approval_date, 'is cannot be in the future')
+    end
+  end
+  def reference_parts_and_product_number_must_not_be_the_same
+    if reference_parts == product_number
+      errors.add(:reference_parts, 'and product number must not be the same')
     end
   end
 end
