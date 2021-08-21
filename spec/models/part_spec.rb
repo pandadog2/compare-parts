@@ -7,7 +7,11 @@ RSpec.describe Part, type: :model do
 
   describe 'partの保存' do
     context 'partが登録できる場合' do
-      it 'images、part_name_id、product_number、material_id、thickness、weight、supplier_id、approval_dateがあれば登録できる' do
+      it 'images、part_name_id、product_number、material_id、thickness、weight、supplier_id、approval_date、reference_partsがあれば登録できる' do
+        expect(@part).to be_valid
+      end
+      it 'reference_partsがなくても登録できる' do
+        @part.reference_parts = ''
         expect(@part).to be_valid
       end
     end
@@ -108,6 +112,12 @@ RSpec.describe Part, type: :model do
         @part.supplier_id = '1'
         @part.valid?
         expect(@part.errors.full_messages).to include('Supplier must be other than 1')
+      end
+      it '編集中のproduct_numberとreference_partsが同じ値だと登録できない' do
+        @part.product_number = '11111-11111'
+        @part.reference_parts = '11111-11111'
+        @part.valid?
+        expect(@part.errors.full_messages).to include('Reference parts and product number must not be the same')
       end
       it 'userが紐付いていなければ登録できない' do
         @part.user = nil
