@@ -31,7 +31,6 @@ class PartsController < ApplicationController
   end
 
   def update
-    @part.images.detach #紐づいている画像を削除
     if @part.update(part_update_params)
       redirect_to car_model_part_path(id: @part)
     else
