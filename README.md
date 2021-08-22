@@ -29,7 +29,7 @@ email： test2@com
 password: pass22  
 
 ### 車種登録
-[![Image from Gyazo](https://i.gyazo.com/be8dbd589bbea66dad84f5bfa1a62de0.gif)](https://gyazo.com/be8dbd589bbea66dad84f5bfa1a62de0)
+[![Image from Gyazo](https://i.gyazo.com/083a11571b490a4796e6853570429683.gif)](https://gyazo.com/083a11571b490a4796e6853570429683)
 新車種の開発が決まったら車種コードを登録します。  
 
 ### 部品登録
@@ -46,12 +46,12 @@ password: pass22
 参考部品：選択式  
 
 ### 部品編集・削除
-[![Image from Gyazo](https://i.gyazo.com/ce31fe25ae3e7725dbc8db071882a684.gif)](https://gyazo.com/ce31fe25ae3e7725dbc8db071882a684)
+[![Image from Gyazo](https://i.gyazo.com/ce31fe25ae3e7725dbc8db071882a684.gif)](https://gyazo.com/ce31fe25ae3e7725dbc8db071882a684)  
 [![Image from Gyazo](https://i.gyazo.com/bc6ee8350cecc905777b4ca01d06971b.gif)](https://gyazo.com/bc6ee8350cecc905777b4ca01d06971b)
 部品登録したユーザーとログイン中のユーザーが同じ場合のみ編集・削除ができます。  
 
 ### 部品検索
-[![Image from Gyazo](https://i.gyazo.com/a51a30ed9f9fa448ee383c2f96318eb9.gif)](https://gyazo.com/a51a30ed9f9fa448ee383c2f96318eb9)
+[![Image from Gyazo](https://i.gyazo.com/6eecb8df97fda72b82771061f0e05061.gif)](https://gyazo.com/6eecb8df97fda72b82771061f0e05061)
 検索条件を選択して検索できます。  
 検索結果が1件なら詳細画面、2件以上なら検索結果画面に遷移します。  
 品番は一意なので、品番を指定すれば簡単に目的の図面を検索できます。  
@@ -66,7 +66,7 @@ password: pass22
 ※ページをリセットしたいときはリロードしてください。  
 
 ## 要件定義
-[![Image from Gyazo](https://i.gyazo.com/911951337d6c24fa97e4a06c6a4ba8e5.png)](https://gyazo.com/911951337d6c24fa97e4a06c6a4ba8e5)  
+[![Image from Gyazo](https://i.gyazo.com/9df8254523908f404b89fb742a605155.png)](https://gyazo.com/9df8254523908f404b89fb742a605155)  
 
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/0cf0b003d1f01f662be2e039352fd34c.png)](https://gyazo.com/0cf0b003d1f01f662be2e039352fd34c)
